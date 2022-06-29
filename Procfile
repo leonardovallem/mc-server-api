@@ -1,1 +1,1 @@
-web: java -jar target/mc-server-api-1.0.jar
+web: java -jar target/mc-server-api-1.0-jar-with-dependencies.jar
