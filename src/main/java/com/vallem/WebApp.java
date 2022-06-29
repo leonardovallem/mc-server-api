@@ -3,6 +3,7 @@ package com.vallem;
 import com.amazonaws.services.ec2.model.AmazonEC2Exception;
 import com.vallem.model.Token;
 import com.vallem.service.AuthService;
+import com.vallem.service.InstanceService;
 import com.vallem.util.JSON;
 import io.activej.http.AsyncServlet;
 import io.activej.http.HttpHeaders;
@@ -10,15 +11,14 @@ import io.activej.http.HttpMethod;
 import io.activej.http.RoutingServlet;
 import io.activej.inject.annotation.Provides;
 import io.activej.launcher.Launcher;
-import io.activej.launchers.http.HttpServerLauncher;
 
-import static com.vallem.InstanceService.getInstance;
+import static com.vallem.service.InstanceService.getInstance;
 import static com.vallem.util.ResponseUtil.badRequest;
 import static com.vallem.util.ResponseUtil.responseOf;
 import static com.vallem.util.ResponseUtil.success;
 import static com.vallem.util.ResponseUtil.unauthorized;
 
-public class WebApp extends HttpServerLauncher {
+public class WebApp extends ServerLauncher {
     @Provides
     AsyncServlet servlet() {
         return RoutingServlet.create()
